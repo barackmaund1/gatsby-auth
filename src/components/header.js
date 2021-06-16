@@ -31,8 +31,8 @@ const Header = ({ siteTitle }) => (
       </h1>
       <nav className='nav'>
         <ul >
-          <li><Link className='link' to='/'>Register</Link></li>
-          <li><Link className='link' to='/'>login</Link></li>
+          <li><Link className='link' to='/register'>Register</Link></li>
+          <li><Link className='link' to='/login'>login</Link></li>
           <li><Link className='link'to='/'>Logout</Link></li>
         </ul>
       </nav>
