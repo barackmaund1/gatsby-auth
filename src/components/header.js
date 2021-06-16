@@ -1,6 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import './layout.css'
 
 const Header = ({ siteTitle }) => (
   <header
@@ -14,8 +15,9 @@ const Header = ({ siteTitle }) => (
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
+        display:`flex`,
       }}
-    >
+    > 
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
@@ -27,6 +29,13 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <nav className='nav'>
+        <ul >
+          <li><Link className='link' to='/'>Register</Link></li>
+          <li><Link className='link' to='/'>login</Link></li>
+          <li><Link className='link'to='/'>Logout</Link></li>
+        </ul>
+      </nav>
     </div>
   </header>
 )
