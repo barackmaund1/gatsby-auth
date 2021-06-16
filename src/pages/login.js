@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const login = () => {
+const Login = () => {
     return (
         <Layout>
             <SEO title='login'/>
@@ -26,6 +26,6 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
 
 
