@@ -1,10 +1,20 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link ,navigate} from "gatsby"
 import './layout.css'
+import { useContext } from "react"
+import { AuthContext } from "../context/auth"
+import firebase from 'gatsby-plugin-firebase'
 
-const Header = ({ siteTitle }) => (
-  <header
+const Header = ({ siteTitle }) => {
+  const {user}=useContext(AuthContext)
+  const handlelogout =async()=>{
+    await firebase.auth().signOut()
+    navigate('/login')
+  }
+
+  return (
+    <header
     style={{
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
@@ -31,15 +41,29 @@ const Header = ({ siteTitle }) => (
       </h1>
       <nav className='nav'>
         <ul >
-          <li><Link className='link' to='/register'>Register</Link></li>
-          <li><Link className='link' to='/login'>login</Link></li>
-          <li><Link className='link'to='/'>Logout</Link></li>
+          {!user?
+            <React.Fragment>
+                <li><Link className='link' to='/register'>Register</Link></li>
+            <li><Link className='link' to='/login'>login</Link></li>
+            </React.Fragment>
+            :
+            (
+
+            <li><Link className='link'to='/' onClick={handlelogout}>Logout</Link></li>
+            
+            )
+          }
+         
+       
         </ul>
       </nav>
     </div>
   </header>
-)
-
+  )
+  
+        
+        }
+        
 Header.propTypes = {
   siteTitle: PropTypes.string,
 }
